@@ -361,11 +361,6 @@ public class QAMain extends JavaPlugin {
 	public void onEnable() {
 		main = this;
 		supportWorldGuard = Bukkit.getPluginManager().isPluginEnabled("WorldGuard");
-		if (Bukkit.getPluginManager().getPlugin("PluginConstructorAPI") == null)
-			// new DependencyDownloader(this, 276723);
-			GithubDependDownloader.autoUpdate(this,
-					new File(getDataFolder().getParentFile(), "PluginConstructorAPI.jar"), "ZombieStriker",
-					"PluginConstructorAPI", "PluginConstructorAPI.jar");
 		try {
 			ParticleHandlers.initValues();
 		} catch (Error | Exception e5) {
@@ -405,19 +400,6 @@ public class QAMain extends JavaPlugin {
 		try {
 			Bukkit.getPluginManager().registerEvents(new Update19Events(), this);
 		} catch (Exception | Error e) {
-		}
-
-		try {
-			/* final Updater updater = */// new Updater(this, 278412, true);
-			/*
-			 * new BukkitRunnable() { public void run() { // TODO: Works well. Make changes
-			 * for the updaters of // PixelPrinter and Music later. if
-			 * (updater.updaterActive) updater.download(false); }
-			 * }.runTaskTimerAsynchronously(this, 20 /* * 60 *, 20 * 60 * 5);
-			 */
-			if (AUTOUPDATE)
-				GithubUpdater.autoUpdate(this, "ZombieStriker", "QualityArmory", "QualityArmory.jar");
-		} catch (Exception e) {
 		}
 
 		Metrics metrics = new Metrics(this);
