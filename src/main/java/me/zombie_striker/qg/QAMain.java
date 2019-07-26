@@ -626,11 +626,6 @@ public class QAMain extends JavaPlugin {
 			this.getDataFolder().mkdirs();
 		}
 		supportWorldGuard = Bukkit.getPluginManager().isPluginEnabled("WorldGuard");
-		if (Bukkit.getPluginManager().getPlugin("PluginConstructorAPI") == null)
-			// new DependencyDownloader(this, 276723);
-			GithubDependDownloader.autoUpdate(this,
-					new File(getDataFolder().getParentFile(), "PluginConstructorAPI.jar"), "ZombieStriker",
-					"PluginConstructorAPI", "PluginConstructorAPI.jar");
 		try {
 			ParticleHandlers.initValues();
 		} catch (Error | Exception e5) {
@@ -678,12 +673,6 @@ public class QAMain extends JavaPlugin {
 		try {
 			Bukkit.getPluginManager().registerEvents(new Update19Events(), this);
 		} catch (Exception | Error e) {
-		}
-
-		try {
-			if (AUTOUPDATE)
-				GithubUpdater.autoUpdate(this, "ZombieStriker", "QualityArmory", "QualityArmory.jar");
-		} catch (Exception e) {
 		}
 
 		Metrics metrics = new Metrics(this);
